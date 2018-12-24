@@ -1,0 +1,81 @@
+<html>
+	<head>
+		<title>Home</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" type="js" href="js/bootstrap.min.js">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.css">
+	</head>
+	<body>
+		<div class="container inverse">
+			<div class="span12">
+				<div class="page-header">
+					<h1>Eventos y torneos</h1>
+				</div>
+			</div>
+			<div class="span12" style="border: 2px dotted #000">
+				<div class="span8" style="border: 2px dotted #000">
+					<div class="page-header">
+						<h2>Eventos</h2>
+					</div>
+					<ul class="thumbnails">
+						<?php
+							while ($res=mysql_fetch_array($reg))
+							{
+								?>
+								<li class="span2">
+									<div class="thumbnail">
+										<img src="img/imagen.jpg" alt="">
+										<div class="caption text-center">
+											<h3>Item 1</h3>
+											<p><?php echo $res["nombre"]; ?></p>
+											<p>this is test</p>
+										</div>
+									</div>
+								</li>
+						<?php
+							}
+						?>
+					</ul>
+				</div>
+				<div class="span3" style="border: 2px dotted #000">
+					<div class="page-header">
+						<h2>Datos</h2>
+					</div>
+					<div id="googleMap" style="width:280px;height:280px;"></div>
+					<form action="">
+						<label>Deporte</label>
+			        	<select>
+			        		<option value="----------">--------------------</option>
+			        		<option value="Futbol">Futbol</option>
+			        		<option value="Basquetbol">Basquetbol</option>
+			        		<option value="Baseball">Baseball</option>
+			        		<option value="Futbol americano">Futbol americano</option>
+			        	</select>
+			        	<label>Tipo</label>
+			        	<select>
+			        		<option value="----------" selected>--------------------</option>
+			        		<option value="Encuentros">Encuentros</option>
+			        		<option value="Torneos">Torneos</option>
+			        		<option value="Enc\Tor">Encuentros\Torneos</option>
+			        	</select>
+					</form>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi dolorum voluptas architecto deserunt neque animi reiciendis adipisci sint ipsum debitis, blanditiis voluptatibus eius corporis placeat, quibusdam error dolor omnis magni.</p>
+				</div>
+			</div>
+		</div>
+		<script src="http://maps.googleapis.com/maps/api/js"></script>
+		<script>
+			function initialize() {
+			  var mapProp = {
+			    center:new google.maps.LatLng(51.508742,-0.120850),
+			    zoom:5,
+			    mapTypeId:google.maps.MapTypeId.ROADMAP
+			  };
+			  var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+			}
+			google.maps.event.addDomListener(window, 'load', initialize);
+		</script>
+	</body>
+</html>
